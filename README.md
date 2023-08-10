@@ -1,0 +1,1 @@
+#### Homework solutions for Introduction to AI by Rachit Shah
