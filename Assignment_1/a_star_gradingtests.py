@@ -135,84 +135,84 @@ class UnitTests(unittest.TestCase):
         # Two correct answers for right-to-left or left-to-right child traversal respectively
         self.assertIn(expand.expand_count, [11, 2])
 
-    # def test5(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_map2, time_map2, 'Whole_Food', 'Ryan_Field')
-    #     self.assertEqual(path, ['Whole_Food', 'Campus', 'Lighthouse', 'Ryan_Field'])
-    #     self.assertEqual(expand.expand_count, 5)
+    def test5(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_map2, time_map2, 'Whole_Food', 'Ryan_Field')
+        self.assertEqual(path, ['Whole_Food', 'Campus', 'Lighthouse', 'Ryan_Field'])
+        self.assertEqual(expand.expand_count, 5)
 
-    # def test6(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_map2, time_map2, 'YWCA', 'Campus')
-    #     self.assertEqual(path, ['YWCA', 'Ryan_Field', 'Lighthouse', 'Campus'])
-    #     self.assertEqual(expand.expand_count, 5)
+    def test6(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_map2, time_map2, 'YWCA', 'Campus')
+        self.assertEqual(path, ['YWCA', 'Ryan_Field', 'Lighthouse', 'Campus'])
+        self.assertEqual(expand.expand_count, 5)
 
-    # def test7(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_map5, time_map5, 'CVS', 'Whole_Food')
-    #     self.assertEqual(path, ['CVS', 'Cinema', 'Whole_Food'])
-    #     self.assertEqual(expand.expand_count, 3)
+    def test7(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_map5, time_map5, 'CVS', 'Whole_Food')
+        self.assertEqual(path, ['CVS', 'Cinema', 'Whole_Food'])
+        self.assertEqual(expand.expand_count, 3)
 
-    # def test8(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_map5, time_map5, 'Ryan_Field', 'CVS')
-    #     self.assertEqual(path, ['Ryan_Field', 'YWCA', 'Cinema', 'Whole_Food', 'CVS'])
-    #     self.assertEqual(expand.expand_count, 7)
+    def test8(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_map5, time_map5, 'Ryan_Field', 'CVS')
+        self.assertEqual(path, ['Ryan_Field', 'YWCA', 'Cinema', 'Whole_Food', 'CVS'])
+        self.assertEqual(expand.expand_count, 7)
 
-    # def test9(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_map5, time_map5, 'Campus', 'CVS')
-    #     self.assertEqual(path, ['Campus', 'Beach', 'Whole_Food', 'CVS'])
-    #     self.assertEqual(expand.expand_count, 5)
+    def test9(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_map5, time_map5, 'Campus', 'CVS')
+        self.assertEqual(path, ['Campus', 'Beach', 'Whole_Food', 'CVS'])
+        self.assertEqual(expand.expand_count, 5)
 
-    # def test10(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_map5, time_map5, 'Campus', 'Cinema')
-    #     self.assertEqual(path, ['Campus', 'Beach', 'Whole_Food', 'CVS', 'Cinema'])
-    #     self.assertEqual(expand.expand_count, 6)
+    def test10(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_map5, time_map5, 'Campus', 'Cinema')
+        self.assertEqual(path, ['Campus', 'Beach', 'Whole_Food', 'CVS', 'Cinema'])
+        self.assertEqual(expand.expand_count, 6)
 
-    # def test11(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_mapM, time_mapM, 'a', 'p')
-    #     self.assertEqual(path, ['a', 'b', 'c', 'd', 'h', 'g', 'f', 'j', 'n', 'o', 'p'])
-    #     self.assertEqual(expand.expand_count, 13)
+    def test11(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_mapM, time_mapM, 'a', 'p')
+        self.assertEqual(path, ['a', 'b', 'c', 'd', 'h', 'g', 'f', 'j', 'n', 'o', 'p'])
+        self.assertEqual(expand.expand_count, 13)
 
-    # def test12(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_mapM, time_mapM, 'h', 'p')
-    #     self.assertEqual(path, ['h', 'g', 'f', 'j', 'n', 'o', 'p'])
-    #     self.assertEqual(expand.expand_count, 8)
+    def test12(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_mapM, time_mapM, 'h', 'p')
+        self.assertEqual(path, ['h', 'g', 'f', 'j', 'n', 'o', 'p'])
+        self.assertEqual(expand.expand_count, 8)
 
-    # def test13(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_mapM, time_mapM, 'h', 'a')
-    #     self.assertEqual(path, ['h', 'd', 'c', 'b', 'a'])
-    #     self.assertEqual(expand.expand_count, 4)
+    def test13(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_mapM, time_mapM, 'h', 'a')
+        self.assertEqual(path, ['h', 'd', 'c', 'b', 'a'])
+        self.assertEqual(expand.expand_count, 4)
 
-    # def test14(self):
-    #     signal.signal(signal.SIGALRM, interrupt)
-    #     expand.expand_count = 0
-    #     signal.alarm(5)
-    #     path = sc.a_star_search(dis_mapM, time_mapM, 'l', 'n')
-    #     self.assertEqual(path, ['l', 'p', 'o', 'n'])
-    #     self.assertEqual(expand.expand_count, 4)
+    def test14(self):
+        signal.signal(signal.SIGALRM, interrupt)
+        expand.expand_count = 0
+        signal.alarm(5)
+        path = sc.a_star_search(dis_mapM, time_mapM, 'l', 'n')
+        self.assertEqual(path, ['l', 'p', 'o', 'n'])
+        self.assertEqual(expand.expand_count, 4)
 
 if __name__== "__main__": unittest.main()
