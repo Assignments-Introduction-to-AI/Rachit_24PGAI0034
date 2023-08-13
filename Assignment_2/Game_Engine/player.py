@@ -46,7 +46,7 @@ class MinimaxPlayer(Player):
         if len(legalMoves) > 0: 
             return legalMoves[0]
         else: 
-            return self.get_max_move_value(board, self.depth, self.symbol)
+            return self.get_max_move_value(board, self.depth, self.symbol)[1]
 
     def get_max_move_value(self, board, depth, symbol):
         """
@@ -68,9 +68,9 @@ class MinimaxPlayer(Player):
         for move in legal_moves:
             board_state = game_rules.makeMove(board, move) # new board state after the move is made
             if symbol == 'x':
-                value = self.get_min_move_value(board_state, depth-1, symbol= 'o')
+                value = self.get_min_move_value(board_state, depth-1, symbol= 'o')[0]
             else:
-                value = self.get_min_move_value(board_state, depth-1, symbol='x')
+                value = self.get_min_move_value(board_state, depth-1, symbol='x')[0]
             
             if value > best[0]: # Storing the max value from all the min values
                 best = (value, move)
@@ -95,9 +95,9 @@ class MinimaxPlayer(Player):
         for move in legal_moves:
             board_state = game_rules.makeMove(board,move)
             if symbol == 'x':
-                value = self.get_max_move_value(board_state, depth-1, symbol= 'o')
+                value = self.get_max_move_value(board_state, depth-1, symbol= 'o')[0]
             else:
-                value = self.get_max_move_value(board_state, depth-1, symbol='x')
+                value = self.get_max_move_value(board_state, depth-1, symbol='x')[0]
 
         if best[0] > value: # Stroing the min value from all the max values
             best = (value,move) 
@@ -122,6 +122,86 @@ class AlphaBetaPlayer(Player):
         legalMoves = game_rules.getLegalMoves(board, self.symbol)
         if len(legalMoves) > 0: return legalMoves[0]
         else: return None
+
+    def get_max_move_value(self, board, depth, lower_bound, upper_bound, symbol):
+        """
+        Function to implement the max move with alpha prunning.\n
+        Args:\n
+            board = State of board when the function is called.\n
+            depth = depth on which we want the max value.\n
+            symobl = checker key on which the player is playing.\n
+        Returns:\n
+            max value
+        """
+
+        legal_moves = game_rules.getLegalMoves(board, symbol)
+        # Condition to check whether we have reached the root node of the min max tree
+        if depth == 0 or len(legal_moves) == 0:
+            return (self.h1(board, symbol), None)
+        
+        best = (NEG_INF, None)
+
+        for move in legal_moves:
+            board_state = game_rules.makeMove(board, move)
+            if symbol == 'x':
+                value = self.get_min_move_value(board_state, depth -1, 
+                                                lower_bound, upper_bound, symbol='o')[0]
+            else:
+                value = self.get_min_move_value(board_state, depth-1, lower_bound, 
+                                                upper_bound, symbol='x')[0]
+                
+            if best[0] < value:
+                best = (value, move) # as we are finding maximum
+            
+            if best[0] >= upper_bound:
+                return best # Beta prunning
+            
+            if best[0] < lower_bound:
+                lower_bound = best[0] # This will change the lower bound to new value
+
+        return best
+
+    def get_min_move_value(self, board, depth, lower_bound, upper_bound, symbol):
+        """
+        Function to implement the max move with beta prunning.\n
+        Args:\n
+            board = State of board when the function is called.\n
+            depth = depth on which we want the min value.\n
+            symobl = checker key on which the player is playing.\n
+        Returns:\n
+            min value
+        """
+
+        legal_moves = game_rules.getLegalMoves(board, symbol)
+        # Condition to check whether we have reached the root node of the min max tree
+        if depth == 0 or len(legal_moves) == 0:
+            return (self.h1(board, symbol), None)
+        
+        best = (POS_INF, None)
+
+        for move in legal_moves:
+            board_state = game_rules.makeMove(board,move)
+            if symbol == 'x':
+                value = self.get_max_move_value(board_state, depth-1, lower_bound, upper_bound, symbol='o')[0]
+
+            else:
+                value = self.get_max_move_value(board_state, depth-1, lower_bound, upper_bound, symbol='x')[0]
+
+            if best[0] > value:
+                best = (value, move)
+
+            if best[0] >= upper_bound:
+                upper_bound = best[0]
+
+            if best[0] < lower_bound:
+                return best
+            
+        return best
+
+            
+
+
+
 
 
 class RandomPlayer(Player):
