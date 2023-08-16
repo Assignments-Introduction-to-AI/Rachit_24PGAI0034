@@ -84,20 +84,6 @@ def bfs_search(time_map: dict, start: str, end: str)->list:
         backtrack(parents, end, path_stack)
 
     return path_stack
-
-
-
-
-time_map1 = {
-    'Campus':{ 'Campus':None, 'Whole_Food':1, 'Beach':1, 'Cinema':None, 'Lighthouse':1, 'Ryan_Field':None, 'YWCA':None },
-    'Whole_Food':{ 'Campus':1, 'Whole_Food':None, 'Beach':1, 'Cinema':1, 'Lighthouse':None, 'Ryan_Field':None, 'YWCA':None },
-    'Beach':{ 'Campus':1, 'Whole_Food':1, 'Beach':None, 'Cinema':None, 'Lighthouse':None, 'Ryan_Field':None, 'YWCA':None },
-    'Cinema':{ 'Campus':None, 'Whole_Food':1, 'Beach':None, 'Cinema':None, 'Lighthouse':None, 'Ryan_Field':None, 'YWCA':1 },
-    'Lighthouse':{ 'Campus':1, 'Whole_Food':None, 'Beach':None, 'Cinema':None, 'Lighthouse':None, 'Ryan_Field':1, 'YWCA':None },
-    'Ryan_Field':{ 'Campus':None, 'Whole_Food':None, 'Beach':None, 'Cinema':None, 'Lighthouse':1, 'Ryan_Field':None, 'YWCA':1 },
-    'YWCA':{ 'Campus':None, 'Whole_Food':None, 'Beach':None, 'Cinema':1, 'Lighthouse':None, 'Ryan_Field':1, 'YWCA':None }
-}
-
-path = bfs_search(time_map1, start='Campus', end='Ryan_Field')        
+     
 
     
