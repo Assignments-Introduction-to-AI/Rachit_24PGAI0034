@@ -223,7 +223,7 @@ class InferenceEngine(object):
             [fact.statement, rule.lhs, rule.rhs])
         ####################################################
         # Student code goes here
-        bindings = rule.lhs[0] == fact.statement
+        bindings = match(rule.lhs[0], fact.statement)
         pair = []
         pair.append(rule)
         pair.append(fact)
